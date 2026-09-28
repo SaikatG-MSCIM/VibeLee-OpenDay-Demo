@@ -1,0 +1,332 @@
+[
+  {
+    "id": "english-market-area",
+    "title": "English Market area",
+    "category": "food",
+    "categoryLabel": "Food and culture",
+    "description": "Begin around Cork's historic market quarter, where covered lanes, food shops and the Grand Parade meet.",
+    "area": "Grand Parade",
+    "access": "mixed",
+    "eveningFriendly": true,
+    "recommendedMinutes": 35,
+    "tags": [
+      "food",
+      "market",
+      "history",
+      "local",
+      "city-centre"
+    ],
+    "coordinates": {
+      "lat": 51.897,
+      "lng": -8.4748
+    }
+  },
+  {
+    "id": "grand-parade",
+    "title": "Grand Parade",
+    "category": "local",
+    "categoryLabel": "City centre",
+    "description": "Take in one of Cork's main public streets and the lanes connecting the market quarter to the south side.",
+    "area": "Grand Parade",
+    "access": "outdoor",
+    "eveningFriendly": true,
+    "recommendedMinutes": 20,
+    "tags": [
+      "street",
+      "local",
+      "architecture",
+      "city-centre"
+    ],
+    "coordinates": {
+      "lat": 51.8977,
+      "lng": -8.4754
+    }
+  },
+  {
+    "id": "st-patricks-street",
+    "title": "St Patrick's Street",
+    "category": "local",
+    "categoryLabel": "Main street",
+    "description": "Follow Cork's best-known central street, framed by curved shopfronts and the River Lee's old channels.",
+    "area": "St Patrick's Street",
+    "access": "outdoor",
+    "eveningFriendly": true,
+    "recommendedMinutes": 25,
+    "tags": [
+      "street",
+      "architecture",
+      "local",
+      "shopping"
+    ],
+    "coordinates": {
+      "lat": 51.8993,
+      "lng": -8.4723
+    }
+  },
+  {
+    "id": "oliver-plunkett-street",
+    "title": "Oliver Plunkett Street",
+    "category": "food",
+    "categoryLabel": "Food and nightlife",
+    "description": "Explore the pedestrian-friendly evening district lined with independent restaurants, pubs and music venues.",
+    "area": "Oliver Plunkett Street",
+    "access": "outdoor",
+    "eveningFriendly": true,
+    "recommendedMinutes": 30,
+    "tags": [
+      "food",
+      "restaurants",
+      "nightlife",
+      "music",
+      "street",
+      "local"
+    ],
+    "coordinates": {
+      "lat": 51.8981,
+      "lng": -8.4694
+    }
+  },
+  {
+    "id": "maccurtain-street",
+    "title": "MacCurtain Street",
+    "category": "local",
+    "categoryLabel": "Victorian Quarter",
+    "description": "Walk through Cork's Victorian Quarter, known for theatres, independent businesses, hotels and late-evening energy.",
+    "area": "Victorian Quarter",
+    "access": "outdoor",
+    "eveningFriendly": true,
+    "recommendedMinutes": 30,
+    "tags": [
+      "neighbourhood",
+      "local",
+      "architecture",
+      "nightlife",
+      "music"
+    ],
+    "coordinates": {
+      "lat": 51.9017,
+      "lng": -8.4684
+    }
+  },
+  {
+    "id": "shandon-quarter",
+    "title": "Shandon quarter",
+    "category": "history",
+    "categoryLabel": "Historic Cork",
+    "description": "Climb into one of Cork's most distinctive neighbourhoods for colourful streets, heritage buildings and elevated city views.",
+    "area": "Shandon",
+    "access": "outdoor",
+    "eveningFriendly": true,
+    "recommendedMinutes": 40,
+    "tags": [
+      "history",
+      "heritage",
+      "views",
+      "neighbourhood",
+      "local"
+    ],
+    "coordinates": {
+      "lat": 51.9033,
+      "lng": -8.4778
+    }
+  },
+  {
+    "id": "elizabeth-fort-area",
+    "title": "Elizabeth Fort area",
+    "category": "history",
+    "categoryLabel": "Fort and city views",
+    "description": "Approach the south side through historic streets around Elizabeth Fort before descending towards the centre.",
+    "area": "Barrack Street",
+    "access": "outdoor",
+    "eveningFriendly": true,
+    "recommendedMinutes": 35,
+    "tags": [
+      "history",
+      "heritage",
+      "views",
+      "architecture",
+      "local"
+    ],
+    "coordinates": {
+      "lat": 51.895,
+      "lng": -8.4804
+    }
+  },
+  {
+    "id": "fitzgeralds-park-area",
+    "title": "Fitzgerald's Park area",
+    "category": "riverside",
+    "categoryLabel": "River and park",
+    "description": "Begin beside the River Lee and follow the western city approach through parkland and leafy streets.",
+    "area": "Mardyke",
+    "access": "outdoor",
+    "eveningFriendly": true,
+    "recommendedMinutes": 40,
+    "tags": [
+      "river",
+      "riverside",
+      "park",
+      "walk",
+      "local"
+    ],
+    "coordinates": {
+      "lat": 51.8957,
+      "lng": -8.4944
+    }
+  },
+  {
+    "id": "marina-district",
+    "title": "Marina district",
+    "category": "riverside",
+    "categoryLabel": "Docklands and food",
+    "description": "Start in Cork's evolving docklands, mixing riverside space, food destinations and the eastern city approach.",
+    "area": "The Marina",
+    "access": "mixed",
+    "eveningFriendly": true,
+    "recommendedMinutes": 45,
+    "tags": [
+      "river",
+      "riverside",
+      "docklands",
+      "food",
+      "walk"
+    ],
+    "coordinates": {
+      "lat": 51.9007,
+      "lng": -8.4486
+    }
+  },
+  {
+    "id": "ucc-main-campus",
+    "title": "UCC main campus",
+    "category": "history",
+    "categoryLabel": "Architecture and campus",
+    "description": "Walk through the university quarter and view the historic Main Quadrangle before continuing into the city.",
+    "area": "University College Cork",
+    "access": "outdoor",
+    "eveningFriendly": true,
+    "recommendedMinutes": 35,
+    "tags": [
+      "history",
+      "architecture",
+      "heritage",
+      "walk",
+      "local"
+    ],
+    "coordinates": {
+      "lat": 51.892,
+      "lng": -8.4921
+    }
+  },
+  {
+    "id": "nano-nagle-quarter",
+    "title": "Nano Nagle quarter",
+    "category": "history",
+    "categoryLabel": "South-side heritage",
+    "description": "Explore the compact heritage quarter around Douglas Street and the gardens and lanes of the south side.",
+    "area": "Douglas Street",
+    "access": "mixed",
+    "eveningFriendly": true,
+    "recommendedMinutes": 35,
+    "tags": [
+      "history",
+      "heritage",
+      "gardens",
+      "neighbourhood",
+      "local"
+    ],
+    "coordinates": {
+      "lat": 51.8945,
+      "lng": -8.4743
+    }
+  },
+  {
+    "id": "emmet-place",
+    "title": "Emmet Place",
+    "category": "history",
+    "categoryLabel": "Art and architecture",
+    "description": "Pause in the civic square around the Crawford Art Gallery and Cork Opera House before crossing the river.",
+    "area": "Emmet Place",
+    "access": "outdoor",
+    "eveningFriendly": true,
+    "recommendedMinutes": 25,
+    "tags": [
+      "art",
+      "architecture",
+      "history",
+      "landmark",
+      "local"
+    ],
+    "coordinates": {
+      "lat": 51.9003,
+      "lng": -8.4736
+    }
+  },
+  {
+    "id": "huguenot-quarter",
+    "title": "Huguenot Quarter",
+    "category": "food",
+    "categoryLabel": "Independent Cork",
+    "description": "Wander the narrow streets around French Church Street, known for cafés, small restaurants and independent shops.",
+    "area": "French Church Street",
+    "access": "outdoor",
+    "eveningFriendly": true,
+    "recommendedMinutes": 25,
+    "tags": [
+      "food",
+      "cafes",
+      "restaurants",
+      "street",
+      "local",
+      "history"
+    ],
+    "coordinates": {
+      "lat": 51.8993,
+      "lng": -8.472
+    }
+  },
+  {
+    "id": "coal-quay",
+    "title": "Coal Quay and Cornmarket Street",
+    "category": "local",
+    "categoryLabel": "Market streets",
+    "description": "See a more local side of the centre through the market streets west of St Patrick's Street.",
+    "area": "Cornmarket Street",
+    "access": "outdoor",
+    "eveningFriendly": true,
+    "recommendedMinutes": 25,
+    "tags": [
+      "market",
+      "street",
+      "local",
+      "food",
+      "neighbourhood"
+    ],
+    "coordinates": {
+      "lat": 51.9,
+      "lng": -8.4765
+    }
+  },
+  {
+    "id": "south-mall-river",
+    "title": "South Mall and river channels",
+    "category": "riverside",
+    "categoryLabel": "River city",
+    "description": "Follow the southern edge of the centre and notice how Cork's streets trace former and present river channels.",
+    "area": "South Mall",
+    "access": "outdoor",
+    "eveningFriendly": true,
+    "recommendedMinutes": 25,
+    "tags": [
+      "river",
+      "riverside",
+      "architecture",
+      "walk",
+      "history"
+    ],
+    "coordinates": {
+      "lat": 51.8974,
+      "lng": -8.468
+    }
+  }
+]

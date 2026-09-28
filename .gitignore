@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+
+# Secrets
+.env
+.env.*
+
+# Runtime/cache
+# venue-cache.json
+
+# Logs
+*.log
+npm-debug.log*
+
+# Operating system
+.DS_Store
+Thumbs.db
+
+# VS Code local settings
+.vscode/
+
+# Local backup archives
+*.zip

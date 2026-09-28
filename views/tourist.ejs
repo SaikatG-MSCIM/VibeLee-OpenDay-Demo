@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  >
+  <meta name="theme-color" content="#111917">
+
+  <title><%= pageTitle %></title>
+
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.css"
+  >
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body class="tourist-page">
+  <main class="app-shell tourist-shell">
+    <header class="site-header tourist-header">
+      <div class="wordmark-row">
+        <a class="wordmark" href="/" aria-label="VibeLee home">
+          <span class="wordmark-symbol" aria-hidden="true">VL</span>
+          <span>VibeLee</span>
+        </a>
+
+        <div class="edition-label">
+          <span>Independent city guide</span>
+          <strong>Cork · 2026</strong>
+        </div>
+      </div>
+
+      <nav class="mode-nav" aria-label="VibeLee modes">
+        <a href="/"><span>01</span> Discover</a>
+        <a class="active" href="/tourist" aria-current="page"><span>02</span> Tourist</a>
+        <a href="/surprise"><span>03</span> Surprise me</a>
+      </nav>
+
+      <div class="intro-grid">
+        <div class="intro-copy tourist-intro-copy">
+          <p class="kicker">Tourist mode</p>
+          <h1>A Cork route shaped around your night.</h1>
+          <p>
+            Choose a date, route style and pace. VibeLee combines two curated Cork stops,
+            real walking directions and a live event at the finish.
+          </p>
+        </div>
+
+        <div class="page-index" aria-hidden="true">
+          <span>02</span>
+          <small>Curated locally<br>No paid API</small>
+        </div>
+      </div>
+    </header>
+
+    <section class="tourist-filter-wrap" aria-label="Tourist route preferences">
+      <div class="filter-heading">
+        <p class="section-label">Build the route</p>
+        <p>The route updates whenever a preference changes.</p>
+      </div>
+
+      <form action="/tourist" method="GET" class="tourist-date-form tourist-preference-form">
+        <label class="filter-control">
+          <span>Plan for</span>
+          <select name="date" onchange="this.form.submit()">
+            <% dateOptions.forEach(date => { %>
+              <option
+                value="<%= date %>"
+                <%= selectedDate === date ? "selected" : "" %>
+              >
+                <%= date %>
+              </option>
+            <% }) %>
+          </select>
+        </label>
+
+        <label class="filter-control">
+          <span>Route style</span>
+          <select name="interest" onchange="this.form.submit()">
+            <option value="balanced" <%= selectedInterest === "balanced" ? "selected" : "" %>>Balanced Cork</option>
+            <option value="food" <%= selectedInterest === "food" ? "selected" : "" %>>Food and streets</option>
+            <option value="history" <%= selectedInterest === "history" ? "selected" : "" %>>History and character</option>
+            <option value="riverside" <%= selectedInterest === "riverside" ? "selected" : "" %>>Riverside Cork</option>
+            <option value="local" <%= selectedInterest === "local" ? "selected" : "" %>>Local neighbourhoods</option>
+          </select>
+        </label>
+
+        <label class="filter-control">
+          <span>Pace</span>
+          <select name="pace" onchange="this.form.submit()">
+            <option value="quick" <%= selectedPace === "quick" ? "selected" : "" %>>Quick loop</option>
+            <option value="standard" <%= selectedPace === "standard" ? "selected" : "" %>>Standard pace</option>
+            <option value="relaxed" <%= selectedPace === "relaxed" ? "selected" : "" %>>Relaxed wander</option>
+          </select>
+        </label>
+
+        <% if (selectedEvent) { %>
+          <input type="hidden" name="event" value="<%= selectedEvent.id %>">
+        <% } %>
+
+        <noscript>
+          <button type="submit" class="primary-button">Build route</button>
+        </noscript>
+      </form>
+
+      <p class="tourist-data-note">
+        Built from <strong><%= touristPlacesCount %> locally curated Cork places</strong> stored inside VibeLee.
+        No Tripadvisor ratings, reviews, billing or live API calls are used.
+      </p>
+    </section>
+
+    <% if (!selectedEvent) { %>
+      <section class="tourist-empty-state">
+        <p class="section-label">No mapped events</p>
+        <h2>No tourist route is available for this date</h2>
+        <p>Try another date or return to the full Discover listings.</p>
+        <a class="primary-button tourist-empty-action" href="/">Open Discover</a>
+      </section>
+    <% } else { %>
+      <section class="tourist-summary-strip" aria-label="Route summary">
+        <div>
+          <span>Date</span>
+          <strong><%= selectedDate %></strong>
+        </div>
+        <div>
+          <span>Route</span>
+          <strong><%= routeThemeLabel %></strong>
+        </div>
+        <div>
+          <span>Walk</span>
+          <strong id="touristRouteDistance"><%= routeSpanKm %> km</strong>
+        </div>
+        <div>
+          <span>Total plan</span>
+          <strong id="touristTotalDuration"><%= estimatedTotalMinutes %> min</strong>
+        </div>
+      </section>
+
+      <span
+        id="touristRouteMeta"
+        hidden
+        data-attraction-minutes="<%= attractionVisitMinutes %>"
+        data-buffer-minutes="<%= arrivalBufferMinutes %>"
+      ></span>
+
+      <section class="tourist-plan-banner" aria-label="Suggested schedule">
+        <div>
+          <span class="tourist-plan-kicker"><%= routePaceLabel %></span>
+          <% if (suggestedStartTime) { %>
+            <strong>Start around <%= suggestedStartTime %></strong>
+          <% } else { %>
+            <strong>Allow about <%= estimatedTotalMinutes %> minutes</strong>
+          <% } %>
+        </div>
+        <p>
+          <%= attractionVisitMinutes %> min exploring ·
+          <span id="touristRouteDuration"><%= estimatedWalkingMinutes %> min walking</span> ·
+          <%= arrivalBufferMinutes %> min arrival buffer
+        </p>
+      </section>
+
+      <div class="tourist-route-grid">
+        <section class="content-section tourist-map-card">
+          <div class="section-heading">
+            <div>
+              <p class="section-label">Route map</p>
+              <h2>Walk it in order</h2>
+            </div>
+            <span class="event-count"><%= candidateCount %></span>
+          </div>
+
+          <div id="touristMap" aria-label="Map of the tourist route"></div>
+          <p class="tourist-map-note" id="touristMapNote">
+            Preparing a walking route along Cork streets and footpaths…
+          </p>
+        </section>
+
+        <section class="content-section tourist-itinerary-section">
+          <div class="section-heading">
+            <div>
+              <p class="section-label">Suggested order</p>
+              <h2>Two places, then the event</h2>
+            </div>
+          </div>
+
+          <div class="tourist-stop-list">
+            <% routeStops.forEach(stop => { %>
+              <article
+                class="tourist-stop-card"
+                data-tourist-stop-id="<%= stop.id %>"
+                tabindex="0"
+                aria-label="Show <%= stop.title %> on the map"
+              >
+                <div class="tourist-stop-number"><%= stop.step %></div>
+                <div class="tourist-stop-content">
+                  <div class="tourist-stop-heading-row">
+                    <span class="tourist-stop-label"><%= stop.label %></span>
+                    <% if (stop.categoryLabel) { %>
+                      <span class="tourist-stop-category"><%= stop.categoryLabel %></span>
+                    <% } %>
+                  </div>
+
+                  <h3><%= stop.title %></h3>
+                  <p><%= stop.description %></p>
+
+                  <% if (!stop.detailUrl) { %>
+                    <div class="tourist-stop-facts">
+                      <span>Allow <%= stop.visitMinutes %> min</span>
+                      <span><%= stop.accessLabel %></span>
+                      <% if (stop.area) { %>
+                        <span><%= stop.area %></span>
+                      <% } %>
+                    </div>
+                  <% } %>
+
+                  <span class="tourist-stop-map-hint">Locate on map</span>
+
+                  <% if (stop.detailUrl) { %>
+                    <a class="text-link" href="<%= stop.detailUrl %>">View event details</a>
+                  <% } %>
+                </div>
+              </article>
+            <% }) %>
+          </div>
+        </section>
+      </div>
+
+      <section class="content-section tourist-featured-section">
+        <div class="section-heading">
+          <div>
+            <p class="section-label">Final stop</p>
+            <h2>End at a live event</h2>
+          </div>
+        </div>
+
+        <article class="tourist-featured-event">
+          <div class="tourist-featured-index" aria-hidden="true"><%= String(routeStops.length).padStart(2, "0") %></div>
+
+          <div class="tourist-featured-body">
+            <div class="tourist-featured-meta">
+              <span><%= selectedEvent.date %></span>
+              <% if (selectedEvent.time) { %>
+                <span><%= selectedEvent.time %></span>
+              <% } %>
+            </div>
+
+            <h3><%= selectedEvent.title %></h3>
+            <p class="tourist-featured-venue"><%= selectedEvent.venue %></p>
+
+            <div class="tourist-event-facts">
+              <% if (selectedEvent.price) { %>
+                <span><%= selectedEvent.price %></span>
+              <% } else if (selectedEvent.priceType === "free") { %>
+                <span>Free</span>
+              <% } else if (selectedEvent.priceType === "paid") { %>
+                <span>Ticketed</span>
+              <% } else { %>
+                <span>Price not listed</span>
+              <% } %>
+
+              <% if (selectedEvent.distanceFromCentreKm !== null) { %>
+                <span><%= selectedEvent.distanceFromCentreKm.toFixed(1) %> km from centre</span>
+              <% } %>
+            </div>
+
+            <div class="tourist-featured-actions">
+              <a
+                class="detail-primary-action"
+                href="/events/<%= encodeURIComponent(selectedEvent.id) %>?from=tourist&amp;date=<%= encodeURIComponent(selectedDate) %>&amp;event=<%= encodeURIComponent(selectedEvent.id) %>&amp;interest=<%= encodeURIComponent(selectedInterest) %>&amp;pace=<%= encodeURIComponent(selectedPace) %>"
+              >
+                Event details
+              </a>
+
+              <% if (selectedEvent.ticketUrl) { %>
+                <a
+                  class="detail-secondary-action"
+                  href="<%= selectedEvent.ticketUrl %>"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Tickets
+                </a>
+              <% } %>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <% if (alternativeEvents.length > 0) { %>
+        <section class="content-section tourist-alternatives-section">
+          <div class="section-heading">
+            <div>
+              <p class="section-label">Change the ending</p>
+              <h2>Other events</h2>
+            </div>
+          </div>
+
+          <div class="tourist-alternative-list">
+            <% alternativeEvents.forEach((event, index) => { %>
+              <a
+                class="tourist-alternative-card"
+                href="/tourist?date=<%= encodeURIComponent(selectedDate) %>&amp;event=<%= encodeURIComponent(event.id) %>&amp;interest=<%= encodeURIComponent(selectedInterest) %>&amp;pace=<%= encodeURIComponent(selectedPace) %>"
+              >
+                <span class="alternative-index"><%= String(index + 1).padStart(2, "0") %></span>
+                <div>
+                  <span><%= event.time || "Time not listed" %> · <%= event.venue %></span>
+                  <strong><%= event.title %></strong>
+                </div>
+                <span class="tourist-alternative-arrow" aria-hidden="true">→</span>
+              </a>
+            <% }) %>
+          </div>
+        </section>
+      <% } %>
+    <% } %>
+
+    <footer class="site-footer mobile-footer">
+      <span>VibeLee</span>
+      <span>Independent Cork event discovery</span>
+    </footer>
+  </main>
+
+  <nav class="mobile-mode-dock" aria-label="VibeLee modes">
+    <a href="/"><span>01</span>Discover</a>
+    <a class="active" href="/tourist" aria-current="page"><span>02</span>Tourist</a>
+    <a href="/surprise"><span>03</span>Surprise</a>
+  </nav>
+
+  <% if (selectedEvent) { %>
+    <script id="touristRouteData" type="application/json"><%- JSON.stringify(routeStops).replace(/</g, "\\u003c") %></script>
+    <script src="https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.js"></script>
+    <script src="/tourist.js"></script>
+  <% } %>
+</body>
+</html>

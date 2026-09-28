@@ -1,0 +1,27 @@
+[
+  {
+    "match": "martin hayes",
+    "categories": ["trad", "music"],
+    "primaryCategory": "trad"
+  },
+  {
+    "match": "cormac begley",
+    "categories": ["trad", "music"],
+    "primaryCategory": "trad"
+  },
+  {
+    "match": "kris drever",
+    "categories": ["trad", "music"],
+    "primaryCategory": "trad"
+  },
+  {
+    "match": "rattling ark",
+    "categories": ["trad", "music"],
+    "primaryCategory": "trad"
+  },
+  {
+    "match": "paul oakenfold",
+    "categories": ["nightlife", "music"],
+    "primaryCategory": "nightlife"
+  }
+]

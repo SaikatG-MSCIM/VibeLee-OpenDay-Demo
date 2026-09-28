@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  >
+  <meta name="theme-color" content="#111917">
+
+  <title>VibeLee | Cork Events</title>
+
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.css"
+  >
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body
+  class="discover-page"
+  data-personalized="<%= isPersonalised ? 'true' : 'false' %>"
+  data-discover-scope="<%= selectedScope %>"
+>
+  <div
+    id="vibeleeSplash"
+    class="brand-splash"
+    hidden
+    aria-hidden="true"
+  >
+    <div class="brand-splash-inner">
+      <div class="splash-route" aria-hidden="true">
+        <svg viewBox="0 0 220 96" role="presentation">
+          <path d="M14 72 C54 18, 100 92, 142 40 C164 14, 191 30, 207 12"></path>
+          <circle cx="14" cy="72" r="5"></circle>
+          <circle cx="207" cy="12" r="5"></circle>
+        </svg>
+      </div>
+
+      <div class="splash-wordmark">
+        <span class="splash-mark" aria-hidden="true">VL</span>
+        <span class="splash-name">VibeLee</span>
+      </div>
+
+      <p>Find your Cork night out.</p>
+    </div>
+  </div>
+
+  <section
+    id="vibeleeOnboarding"
+    class="onboarding-overlay"
+    hidden
+    aria-hidden="true"
+  >
+    <div class="onboarding-backdrop" aria-hidden="true"></div>
+
+    <div
+      class="onboarding-panel"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="onboardingTitle"
+    >
+      <header class="onboarding-header">
+        <a class="onboarding-wordmark" href="/" aria-label="VibeLee home">
+          <span aria-hidden="true">VL</span>
+          <strong>VibeLee</strong>
+        </a>
+
+        <button
+          id="onboardingSkipButton"
+          class="onboarding-skip"
+          type="button"
+        >
+          Skip for now
+        </button>
+      </header>
+
+      <div class="onboarding-progress" aria-label="Onboarding progress">
+        <span class="active" data-onboarding-progress="1"></span>
+        <span data-onboarding-progress="2"></span>
+      </div>
+
+      <div class="onboarding-step active" data-onboarding-step="1">
+        <p class="onboarding-kicker">Make VibeLee yours</p>
+        <h2 id="onboardingTitle">What kind of night are you looking for?</h2>
+        <p class="onboarding-intro">
+          Pick one or more interests. VibeLee will use them to filter and rank
+          the Cork events shown on Discover.
+        </p>
+
+        <div
+          class="onboarding-interest-grid"
+          role="group"
+          aria-label="Choose event interests"
+        >
+          <% [
+            { id: 'music', label: 'Live music', icon: '/icons/event-categories/music.svg' },
+            { id: 'nightlife', label: 'Nightlife', icon: '/icons/event-categories/nightlife.svg' },
+            { id: 'comedy', label: 'Comedy', icon: '/icons/event-categories/comedy.svg' },
+            { id: 'trad', label: 'Traditional', icon: '/icons/event-categories/trad.svg' },
+            { id: 'open-mic', label: 'Open mic', icon: '/icons/event-categories/open-mic.svg' },
+            { id: 'festivals', label: 'Festivals', icon: '/icons/event-categories/festivals.svg' }
+          ].forEach(interest => { %>
+            <button
+              type="button"
+              class="onboarding-interest"
+              data-onboarding-interest="<%= interest.id %>"
+              aria-pressed="false"
+            >
+              <span class="onboarding-interest-icon" aria-hidden="true">
+                <img src="<%= interest.icon %>" alt="">
+              </span>
+              <strong><%= interest.label %></strong>
+              <span class="onboarding-interest-check" aria-hidden="true">✓</span>
+            </button>
+          <% }) %>
+        </div>
+
+        <p id="onboardingInterestError" class="onboarding-error" hidden>
+          Choose at least one interest to continue.
+        </p>
+
+        <div class="onboarding-actions">
+          <button
+            id="onboardingContinueButton"
+            class="onboarding-primary"
+            type="button"
+          >
+            Continue
+          </button>
+        </div>
+      </div>
+
+      <div class="onboarding-step" data-onboarding-step="2" hidden>
+        <p class="onboarding-kicker">Shape the shortlist</p>
+        <h2>What suits your night?</h2>
+        <p class="onboarding-intro">
+          These choices keep the recommendation useful without requiring an
+          account or sharing personal data.
+        </p>
+
+        <fieldset class="onboarding-choice-group">
+          <legend>Budget</legend>
+          <div class="onboarding-choice-row">
+            <button type="button" data-onboarding-budget="any" aria-pressed="true" class="active">Any price</button>
+            <button type="button" data-onboarding-budget="free" aria-pressed="false">Free</button>
+            <button type="button" data-onboarding-budget="paid" aria-pressed="false">Ticketed</button>
+          </div>
+        </fieldset>
+
+        <fieldset class="onboarding-choice-group">
+          <legend>How far around Cork?</legend>
+          <div class="onboarding-scope-list">
+            <button type="button" data-onboarding-scope="centre" aria-pressed="false">
+              <strong>City centre</strong>
+              <span>Within roughly 3 km</span>
+            </button>
+            <button type="button" data-onboarding-scope="nearby" aria-pressed="true" class="active">
+              <strong>Nearby Cork</strong>
+              <span>Within roughly 8 km</span>
+            </button>
+            <button type="button" data-onboarding-scope="any" aria-pressed="false">
+              <strong>Anywhere listed</strong>
+              <span>Include regional Cork events</span>
+            </button>
+          </div>
+        </fieldset>
+
+        <div class="onboarding-actions split">
+          <button
+            id="onboardingBackButton"
+            class="onboarding-secondary"
+            type="button"
+          >
+            Back
+          </button>
+          <button
+            id="onboardingSaveButton"
+            class="onboarding-primary"
+            type="button"
+          >
+            Show my events
+          </button>
+        </div>
+
+        <button
+          id="onboardingResetButton"
+          class="onboarding-reset"
+          type="button"
+          hidden
+        >
+          Clear saved preferences
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <div id="loadingOverlay" class="loading-overlay hidden">
+    <div class="loading-card" role="status" aria-live="polite">
+      <div class="loader"></div>
+      <div>
+        <p class="loading-eyebrow">VibeLee is updating</p>
+        <h2 id="loadingTitle">Loading events</h2>
+        <p id="loadingMessage">Getting the latest CorkGigs listings...</p>
+      </div>
+    </div>
+  </div>
+
+  <main class="app-shell">
+    <header class="site-header">
+      <div class="wordmark-row">
+        <a class="wordmark" href="/" aria-label="VibeLee home">
+          <span class="wordmark-symbol" aria-hidden="true">VL</span>
+          <span>VibeLee</span>
+        </a>
+
+        <div class="edition-label">
+          <span>Independent city guide</span>
+          <strong>Cork · 2026</strong>
+        </div>
+      </div>
+
+      <nav class="mode-nav" aria-label="VibeLee modes">
+        <a class="active" href="/" aria-current="page">
+          <span>01</span> Discover
+        </a>
+        <a href="/tourist"><span>02</span> Tourist</a>
+        <a href="/surprise"><span>03</span> Surprise me</a>
+      </nav>
+
+      <div class="intro-grid">
+        <div class="intro-copy">
+          <p class="kicker">Discover Cork</p>
+          <h1>Find a better night out.</h1>
+          <p>
+            Live music, comedy and independent events across Cork city and county,
+            collected in one practical guide.
+          </p>
+        </div>
+
+        <div class="page-index" aria-hidden="true">
+          <span>01</span>
+          <small>Live listings<br>and venue map</small>
+        </div>
+      </div>
+    </header>
+
+    <section class="filters-wrap" aria-label="Event filters">
+      <div class="filter-heading">
+        <p class="section-label">Search the guide</p>
+        <p>Use one filter or combine several.</p>
+      </div>
+
+      <form
+        action="/"
+        method="GET"
+        class="filter-panel search-box"
+        data-earliest-event-date="<%= earliestEventDate %>"
+        data-latest-event-date="<%= latestEventDate %>"
+      >
+        <input
+          id="categoryFilterInput"
+          type="hidden"
+          name="categories"
+          value="<%= selectedCategories.join(',') %>"
+        >
+
+        <input
+          id="discoverScopeInput"
+          type="hidden"
+          name="scope"
+          value="<%= selectedScope %>"
+        >
+
+        <input
+          id="personalizedInput"
+          type="hidden"
+          name="personalized"
+          value="<%= isPersonalised ? '1' : '' %>"
+        >
+
+        <div class="category-filter-block">
+          <div class="category-filter-heading">
+            <div>
+              <span>Explore events</span>
+              <strong>Choose your interests</strong>
+            </div>
+
+            <div class="category-filter-tools">
+              <small>
+                <%= events.length %> shown from <%= categoryScopeCount %> in this date range
+              </small>
+              <button id="editInterestsBtn" type="button">Edit interests</button>
+            </div>
+          </div>
+
+          <div
+            class="category-filter-rail"
+            id="categoryFilterRail"
+            role="group"
+            aria-label="Filter events by category"
+          >
+            <% categoryFilters.forEach(category => { %>
+              <button
+                type="button"
+                class="category-filter-card category-<%= category.id %> <%= category.selected ? 'active' : '' %> <%= category.disabled ? 'disabled' : '' %>"
+                data-category-filter="<%= category.id %>"
+                aria-pressed="<%= category.selected ? 'true' : 'false' %>"
+                aria-disabled="<%= category.disabled ? 'true' : 'false' %>"
+                title="<%= category.disabled ? `No ${category.label.toLowerCase()} in this date range` : `Filter by ${category.label}` %>"
+                <%= category.disabled ? 'disabled' : '' %>
+              >
+                <span class="category-filter-icon" aria-hidden="true">
+                  <img src="<%= category.icon %>" alt="">
+                </span>
+
+                <span class="category-filter-copy">
+                  <strong><%= category.shortLabel %></strong>
+                  <small><%= category.count %> <%= category.count === 1 ? 'event' : 'events' %></small>
+                </span>
+
+                <span class="category-filter-check" aria-hidden="true">✓</span>
+              </button>
+            <% }) %>
+          </div>
+
+          <p class="category-filter-help">
+            Select one or more interests. Multiple event types broaden the list;
+            adding <strong>Free</strong> narrows it to free matches.
+          </p>
+        </div>
+
+        <label class="search-field">
+          <span>Search</span>
+          <input
+            type="search"
+            name="q"
+            placeholder="Artist, event or venue"
+            value="<%= searchQuery %>"
+          >
+        </label>
+
+        <fieldset class="date-range-block">
+          <legend>
+            <span>Date range</span>
+            <strong id="dateRangeSummary"><%= dateRangeSummary %></strong>
+          </legend>
+
+          <div class="date-range-fields">
+            <label class="filter-control">
+              <span>From</span>
+              <input
+                id="startDateInput"
+                type="date"
+                name="from"
+                value="<%= selectedStartDate %>"
+              >
+            </label>
+
+            <span class="date-range-arrow" aria-hidden="true">→</span>
+
+            <label class="filter-control">
+              <span>To</span>
+              <input
+                id="endDateInput"
+                type="date"
+                name="to"
+                value="<%= selectedEndDate %>"
+              >
+            </label>
+          </div>
+
+          <div class="date-presets" aria-label="Quick date ranges">
+            <button type="button" class="date-preset-button" data-range-preset="today">
+              Today
+            </button>
+            <button type="button" class="date-preset-button" data-range-preset="next3">
+              Next 3 days
+            </button>
+            <button type="button" class="date-preset-button" data-range-preset="weekend">
+              This weekend
+            </button>
+            <button type="button" class="date-preset-button" data-range-preset="clear">
+              All dates
+            </button>
+          </div>
+        </fieldset>
+
+        <label class="filter-control price-filter-control">
+          <span>Price</span>
+          <select name="price">
+            <option value="">All prices</option>
+            <option value="free" <%= selectedPrice === "free" ? "selected" : "" %>>
+              Free
+            </option>
+            <option value="paid" <%= selectedPrice === "paid" ? "selected" : "" %>>
+              Ticketed
+            </option>
+            <option value="unknown" <%= selectedPrice === "unknown" ? "selected" : "" %>>
+              Price unknown
+            </option>
+          </select>
+        </label>
+
+        <div class="filter-actions">
+          <button type="submit" class="primary-button">Show events</button>
+          <a href="/?personalized=0" id="resetFiltersLink" class="secondary-button">Reset</a>
+        </div>
+      </form>
+    </section>
+
+    <% if (isPersonalised) { %>
+      <section class="personalised-summary" aria-label="Saved event preferences">
+        <div class="personalised-summary-mark" aria-hidden="true">VL</div>
+        <div>
+          <p class="section-label">Picked for you</p>
+          <h2>Your Cork shortlist is ready.</h2>
+          <p>
+            <strong><%= selectedInterestLabels.length ? selectedInterestLabels.join(' · ') : 'All event types' %></strong>
+            <span>·</span>
+            <%= selectedBudgetLabel %>
+            <span>·</span>
+            <%= selectedScopeLabel %>
+          </p>
+        </div>
+        <button id="personalisedEditBtn" type="button">Change choices</button>
+      </section>
+    <% } %>
+
+    <div class="discover-grid">
+      <section class="content-section map-card" id="discoverMapCard">
+        <div class="section-heading map-heading">
+          <div>
+            <p class="section-label">Chapter 01 · Map</p>
+            <h2>Explore by venue</h2>
+          </div>
+
+          <div class="map-heading-actions">
+            <span class="event-count" aria-label="Number of events">
+              <%= events.length %>
+            </span>
+
+            <button
+              id="toggleStickyMapBtn"
+              class="map-collapse-button"
+              type="button"
+              aria-controls="mapStickyBody"
+              aria-expanded="true"
+            >
+              Hide map
+            </button>
+          </div>
+        </div>
+
+        <div id="mapStickyBody" class="map-sticky-body">
+          <div class="map-section">
+            <div class="map-toolbar">
+              <button id="currentLocationBtn" type="button">Near me</button>
+              <button id="clearLocationBtn" type="button" hidden>Clear location</button>
+              <button id="showAllBtn" type="button">All venues</button>
+            </div>
+            <p
+              id="mapInteractionStatus"
+              class="map-interaction-status"
+              role="status"
+              aria-live="polite"
+              hidden
+            ></p>
+            <div id="map"></div>
+
+            <aside
+              id="mapLegend"
+              class="map-legend"
+              aria-label="Map marker categories"
+              hidden
+            >
+              <span class="map-legend-label">Key</span>
+              <ul id="mapLegendList"></ul>
+            </aside>
+
+            <section
+              id="mobileEventPreview"
+              class="mobile-event-preview"
+              aria-label="Selected event preview"
+              aria-live="polite"
+              hidden
+            >
+              <div class="mobile-event-preview-heading">
+                <div>
+                  <p id="mobileEventPreviewVenue" class="mobile-event-preview-venue"></p>
+                  <span id="mobileEventPreviewCount" class="mobile-event-preview-count"></span>
+                </div>
+                <button
+                  id="mobileEventPreviewClose"
+                  class="mobile-event-preview-close"
+                  type="button"
+                  aria-label="Close selected event preview"
+                >
+                  &times;
+                </button>
+              </div>
+
+              <div class="mobile-event-preview-main">
+                <div class="mobile-event-preview-copy">
+                  <span id="mobileEventPreviewCategory" class="mobile-event-preview-category"></span>
+                  <h3 id="mobileEventPreviewTitle"></h3>
+                  <p id="mobileEventPreviewDate"></p>
+                </div>
+
+                <a id="mobileEventPreviewDetails" class="mobile-event-preview-details" href="#">
+                  View details
+                </a>
+              </div>
+
+              <div id="mobileEventPreviewNavigation" class="mobile-event-preview-navigation" hidden>
+                <button
+                  id="mobileEventPreviewPrevious"
+                  type="button"
+                  aria-label="Show previous event at this venue"
+                >
+                  Previous
+                </button>
+                <span id="mobileEventPreviewPosition" aria-live="off"></span>
+                <button
+                  id="mobileEventPreviewNext"
+                  type="button"
+                  aria-label="Show next event at this venue"
+                >
+                  Next
+                </button>
+              </div>
+            </section>
+          </div>
+
+          <p class="map-caption">
+            The map stays visible while you browse the event list. Hide it whenever you need more screen space.
+          </p>
+        </div>
+      </section>
+
+      <section class="content-section events-section" id="events">
+        <div class="section-heading events-heading">
+          <div>
+            <p class="section-label">Chapter 02 · Listings</p>
+            <h2><%= isPersonalised ? "Picked for you" : "Upcoming events" %></h2>
+          </div>
+
+          <div class="utility-links">
+            <a href="/refresh-events" id="refreshEventsLink">Refresh</a>
+            <a href="/api/events" target="_blank" rel="noopener noreferrer">Data</a>
+          </div>
+        </div>
+
+        <p class="distance-help">
+          Use <strong>Near me</strong> to add distance and sort the list from closest to furthest.
+        </p>
+
+        <% if (events.length === 0) { %>
+          <div class="empty-state">
+            <p class="section-label">No results</p>
+            <h3>Nothing matches those filters</h3>
+            <p><%= isPersonalised ? "Try changing your saved interests, distance or budget." : "Try another date, price option or search term." %></p>
+            <a href="/">Clear all filters</a>
+          </div>
+        <% } %>
+
+        <div class="event-list" id="eventList">
+          <% events.forEach((event, index) => { %>
+            <article
+              class="event-card"
+              data-id="<%= event.id %>"
+              data-title="<%= event.title %>"
+              data-date="<%= event.isoDate || '' %>"
+              data-venue="<%= event.venue %>"
+              data-lat="<%= event.coordinates ? event.coordinates.lat : '' %>"
+              data-lng="<%= event.coordinates ? event.coordinates.lng : '' %>"
+              data-detail-url="/events/<%= encodeURIComponent(event.id) %>"
+              data-source-url="<%= event.url %>"
+              data-primary-category="<%= event.primaryCategory %>"
+              data-category-label="<%= event.categoryShortLabel %>"
+              data-categories="<%= event.categories.join(',') %>"
+            >
+              <a
+                class="event-preview"
+                href="/events/<%= encodeURIComponent(event.id) %>"
+                data-preview-url="/api/events/<%= encodeURIComponent(event.id) %>/preview"
+                data-preview-state="waiting"
+                aria-label="View details for <%= event.title %>"
+              >
+                <span class="event-preview-placeholder" aria-hidden="true">
+                  <span class="event-preview-monogram">VL</span>
+                  <small>Event image</small>
+                </span>
+
+                <img
+                  class="event-preview-image"
+                  alt="<%= event.title %> at <%= event.venue %>"
+                  loading="lazy"
+                  decoding="async"
+                >
+
+                <span class="event-preview-status" aria-hidden="true">
+                  Loading image
+                </span>
+              </a>
+
+              <span class="event-sequence" aria-hidden="true">
+                <%= String(index + 1).padStart(2, "0") %>
+              </span>
+
+              <% if (isPersonalised && index < 5) { %>
+                <span class="personalised-pick-badge">For you</span>
+              <% } %>
+
+              <div class="event-date-column">
+                <span class="event-date"><%= event.date %></span>
+                <% if (event.time) { %>
+                  <span class="event-time"><%= event.time %></span>
+                <% } %>
+              </div>
+
+              <div class="event-main">
+                <div class="event-top">
+                  <p class="venue">
+                    <span class="venue-icon" aria-hidden="true"></span>
+                    <%= event.venue %>
+                  </p>
+
+                  <% if (event.price) { %>
+                    <span class="event-price"><%= event.price %></span>
+                  <% } else if (event.priceType === "free") { %>
+                    <span class="event-price free">Free</span>
+                  <% } else if (event.priceType === "paid") { %>
+                    <span class="event-price ticketed">Ticketed</span>
+                  <% } %>
+                </div>
+
+                <span class="event-category-chip category-<%= event.primaryCategory %>">
+                  <img src="<%= event.categoryIcon %>" alt="" aria-hidden="true">
+                  <%= event.categoryShortLabel %>
+                </span>
+
+                <h3>
+                  <a class="event-title-link" href="/events/<%= encodeURIComponent(event.id) %>">
+                    <%= event.title %>
+                  </a>
+                </h3>
+
+                <% if (!event.coordinates) { %>
+                  <p class="missing-location">Map location unavailable</p>
+                <% } %>
+
+                <div class="card-actions">
+                  <button
+                    type="button"
+                    class="map-focus-btn"
+                    <%= !event.coordinates ? "disabled" : "" %>
+                  >
+                    Show on map
+                  </button>
+
+                  <a
+                    class="details-link"
+                    href="/events/<%= encodeURIComponent(event.id) %>"
+                  >
+                    View details
+                  </a>
+                </div>
+              </div>
+            </article>
+          <% }) %>
+        </div>
+      </section>
+    </div>
+
+    <footer class="site-footer mobile-footer">
+      <span>VibeLee</span>
+      <span>Independent Cork event discovery</span>
+    </footer>
+  </main>
+
+  <nav class="mobile-mode-dock" aria-label="VibeLee modes">
+    <a class="active" href="/" aria-current="page"><span>01</span>Discover</a>
+    <a href="/tourist"><span>02</span>Tourist</a>
+    <a href="/surprise"><span>03</span>Surprise</a>
+  </nav>
+
+  <script src="https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.js"></script>
+  <script src="/app.js"></script>
+  <script src="/onboarding.js"></script>
+</body>
+</html>

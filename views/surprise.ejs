@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  >
+  <meta name="theme-color" content="#111917">
+
+  <title><%= pageTitle %></title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body class="surprise-page">
+  <main class="app-shell surprise-shell">
+    <header class="site-header surprise-header">
+      <div class="wordmark-row">
+        <a class="wordmark" href="/" aria-label="VibeLee home">
+          <span class="wordmark-symbol" aria-hidden="true">VL</span>
+          <span>VibeLee</span>
+        </a>
+
+        <div class="edition-label">
+          <span>Independent city guide</span>
+          <strong>Cork · 2026</strong>
+        </div>
+      </div>
+
+      <nav class="mode-nav" aria-label="VibeLee modes">
+        <a href="/"><span>01</span> Discover</a>
+        <a href="/tourist"><span>02</span> Tourist</a>
+        <a class="active" href="/surprise" aria-current="page"><span>03</span> Surprise me</a>
+      </nav>
+
+      <div class="intro-grid">
+        <div class="intro-copy surprise-intro-copy">
+          <p class="kicker">Surprise me</p>
+          <h1>Make one good decision less.</h1>
+          <p>
+            Choose a date, mood, budget and area. VibeLee will draw one event
+            from the listings that genuinely fit.
+          </p>
+        </div>
+
+        <div class="page-index" aria-hidden="true">
+          <span>03</span>
+          <small>One filtered draw<br>no endless scrolling</small>
+        </div>
+      </div>
+    </header>
+
+    <div class="surprise-workbench">
+      <aside class="surprise-controls-column">
+        <section class="surprise-filter-wrap" aria-label="Surprise event preferences">
+          <div class="filter-heading">
+            <p class="section-label">Set the boundaries</p>
+            <p>Every selection narrows the draw.</p>
+          </div>
+
+          <form action="/surprise" method="GET" class="surprise-filter-form" id="surpriseFilterForm">
+            <div class="surprise-filter-grid">
+              <label class="filter-control">
+                <span>Date</span>
+                <select name="date">
+                  <% dateOptions.forEach(date => { %>
+                    <option
+                      value="<%= date %>"
+                      <%= selectedDate === date ? "selected" : "" %>
+                    >
+                      <%= date %>
+                    </option>
+                  <% }) %>
+                </select>
+              </label>
+
+              <label class="filter-control">
+                <span>Event type</span>
+                <select name="type">
+                  <option value="any" <%= selectedType === "any" ? "selected" : "" %>>Anything</option>
+                  <option value="music" <%= selectedType === "music" ? "selected" : "" %>>Live music</option>
+                  <option value="comedy" <%= selectedType === "comedy" ? "selected" : "" %>>Comedy</option>
+                  <option value="nightlife" <%= selectedType === "nightlife" ? "selected" : "" %>>DJ and nightlife</option>
+                  <option value="trad" <%= selectedType === "trad" ? "selected" : "" %>>Traditional music</option>
+                </select>
+              </label>
+
+              <label class="filter-control">
+                <span>Budget</span>
+                <select name="price">
+                  <option value="any" <%= selectedPrice === "any" ? "selected" : "" %>>Any price</option>
+                  <option value="free" <%= selectedPrice === "free" ? "selected" : "" %>>Free only</option>
+                  <option value="paid" <%= selectedPrice === "paid" ? "selected" : "" %>>Ticketed only</option>
+                </select>
+              </label>
+
+              <label class="filter-control">
+                <span>Area</span>
+                <select name="distance">
+                  <option value="centre" <%= selectedDistance === "centre" ? "selected" : "" %>>City centre · 3 km</option>
+                  <option value="nearby" <%= selectedDistance === "nearby" ? "selected" : "" %>>Cork area · 8 km</option>
+                  <option value="any" <%= selectedDistance === "any" ? "selected" : "" %>>Anywhere listed</option>
+                </select>
+              </label>
+            </div>
+
+            <button class="primary-button surprise-submit-button" type="submit" id="surpriseSubmitButton">
+              Draw an event
+            </button>
+          </form>
+        </section>
+
+        <section class="surprise-count-strip" aria-label="Surprise result summary">
+          <div>
+            <span>Matching events</span>
+            <strong><%= candidateCount %></strong>
+          </div>
+          <div>
+            <span>Search area</span>
+            <strong><%= distanceScopeLabel %></strong>
+          </div>
+        </section>
+      </aside>
+
+      <div class="surprise-result-column">
+        <% if (!selectedEvent) { %>
+          <section class="surprise-empty-state">
+            <p class="section-label">No match</p>
+            <h2>Those preferences are too specific</h2>
+            <p>
+              Try any price, a wider area or another event type. VibeLee will only choose from listings that genuinely match the selected filters.
+            </p>
+            <a class="primary-button surprise-empty-action" href="/surprise?date=<%= encodeURIComponent(selectedDate) %>&amp;type=any&amp;price=any&amp;distance=nearby">
+              Relax the filters
+            </a>
+          </section>
+        <% } else { %>
+          <section class="content-section surprise-result-section">
+            <div class="section-heading surprise-result-heading">
+              <div>
+                <p class="section-label">The draw</p>
+                <h2>Your event</h2>
+              </div>
+              <span class="surprise-pick-number">01 / 01</span>
+            </div>
+
+            <article class="surprise-draw-card">
+              <div class="surprise-ticket-edge" aria-hidden="true"></div>
+
+              <div class="surprise-image-panel <%= selectedEvent.imageUrl ? 'has-image' : 'fallback-image' %>">
+                <% if (selectedEvent.imageUrl) { %>
+                  <img
+                    src="<%= selectedEvent.imageUrl %>"
+                    alt="Image for <%= selectedEvent.title %>"
+                    onerror="this.closest('.surprise-image-panel').classList.add('image-failed'); this.remove();"
+                  >
+                <% } %>
+
+                <div class="surprise-fallback-art" aria-hidden="true">
+                  <span><%= selectedEvent.title.charAt(0).toUpperCase() %></span>
+                  <small>VibeLee pick</small>
+                </div>
+
+                <div class="surprise-image-caption">
+                  <span><%= selectedEvent.date %></span>
+                  <% if (selectedEvent.time) { %>
+                    <span><%= selectedEvent.time %></span>
+                  <% } %>
+                </div>
+              </div>
+
+              <div class="surprise-draw-content">
+                <div class="surprise-meta-row">
+                  <span><%= selectedEvent.surpriseTypeLabel %></span>
+                  <span><%= selectedEvent.source %></span>
+                </div>
+
+                <h2><%= selectedEvent.title %></h2>
+                <p class="surprise-venue"><%= selectedEvent.venue %></p>
+
+                <div class="surprise-facts">
+                  <span><%= selectedEvent.priceLabel %></span>
+
+                  <% if (selectedEvent.distanceFromCentreKm !== null) { %>
+                    <span><%= selectedEvent.distanceFromCentreKm.toFixed(1) %> km from centre</span>
+                  <% } else { %>
+                    <span>Distance unavailable</span>
+                  <% } %>
+                </div>
+
+                <p class="surprise-reason"><%= selectionReason %></p>
+
+                <div class="surprise-actions">
+                  <a class="detail-primary-action" href="<%= detailUrl %>">
+                    Event details
+                  </a>
+
+                  <% if (selectedEvent.ticketUrl) { %>
+                    <a
+                      class="detail-secondary-action"
+                      href="<%= selectedEvent.ticketUrl %>"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Tickets
+                    </a>
+                  <% } %>
+                </div>
+              </div>
+            </article>
+
+            <a class="surprise-reroll-button" id="surpriseRerollButton" href="<%= rerollUrl %>">
+              Pick another event
+              <span aria-hidden="true">↻</span>
+            </a>
+          </section>
+
+          <section class="content-section surprise-method-section">
+            <div class="section-heading">
+              <div>
+                <p class="section-label">Method</p>
+                <h2>A constrained random choice</h2>
+              </div>
+            </div>
+
+            <p>
+              The result is drawn only from events matching your date, event type, budget and area. Rerolling keeps the same preferences while avoiding the current event whenever another match is available.
+            </p>
+          </section>
+        <% } %>
+      </div>
+    </div>
+
+    <footer class="site-footer mobile-footer">
+      <span>VibeLee</span>
+      <span>Independent Cork event discovery</span>
+    </footer>
+  </main>
+
+  <nav class="mobile-mode-dock" aria-label="VibeLee modes">
+    <a href="/"><span>01</span>Discover</a>
+    <a href="/tourist"><span>02</span>Tourist</a>
+    <a class="active" href="/surprise" aria-current="page"><span>03</span>Surprise</a>
+  </nav>
+
+  <script src="/surprise.js"></script>
+</body>
+</html>

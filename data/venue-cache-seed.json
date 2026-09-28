@@ -1,0 +1,287 @@
+{
+  "book'd @ prim's, kinsale": {
+    "venue": "Book'd @ Prim's, Kinsale",
+    "address": "Book'd @ Prim's, Kinsale, Cork, Ireland",
+    "coordinates": {
+      "lat": 51.70425,
+      "lng": -8.52189
+    },
+    "source": "venue-overrides.json"
+  },
+  "the marquee": {
+    "venue": "The Marquee",
+    "address": "The Marquee, Cork, Ireland",
+    "coordinates": {
+      "lat": 51.8979,
+      "lng": -8.4339
+    },
+    "source": "venue-overrides.json"
+  },
+  "fred zeppelins": {
+    "venue": "Fred Zeppelins",
+    "address": "Fred Zeppelins, Cork, Ireland",
+    "coordinates": {
+      "lat": 51.89615,
+      "lng": -8.47271
+    },
+    "source": "venue-overrides.json"
+  },
+  "st anne's church, shandon": {
+    "venue": "St Anne's Church, Shandon",
+    "address": "St Anne's Church, Shandon, Cork, Ireland",
+    "coordinates": {
+      "lat": 51.9047056,
+      "lng": -8.4761453
+    },
+    "source": "venue-overrides.json"
+  },
+  "cyprus avenue": {
+    "venue": "Cyprus Avenue",
+    "address": "Cyprus Avenue, Cork, Ireland",
+    "coordinates": {
+      "lat": 51.8983433,
+      "lng": -8.4698116
+    },
+    "source": "venue-overrides.json"
+  },
+  "levis, ballydehob": {
+    "venue": "Levis, Ballydehob",
+    "address": "Levis, Ballydehob, Cork, Ireland",
+    "coordinates": {
+      "lat": 51.5626184,
+      "lng": -9.460365
+    },
+    "source": "venue-overrides.json"
+  },
+  "city limits (comedy club)": {
+    "venue": "City Limits (Comedy Club)",
+    "address": "Cork, Ireland",
+    "coordinates": {
+      "lat": 51.9019101,
+      "lng": -8.4709941
+    },
+    "source": "https://www.corkgigs.com/venue/city-limits-comedy-club"
+  },
+  "savoy theatre": {
+    "venue": "Savoy Theatre",
+    "address": "Savoy Theatre, Cork, Ireland",
+    "coordinates": {
+      "lat": 51.89948,
+      "lng": -8.47162
+    },
+    "source": "venue-overrides.json"
+  },
+  "sea church, ballycotton": {
+    "venue": "Sea Church, Ballycotton",
+    "address": "Sea Church, Ballycotton, Cork, Ireland",
+    "coordinates": {
+      "lat": 51.8295069,
+      "lng": -8.0111934
+    },
+    "source": "venue-overrides.json"
+  },
+  "triskel arts centre": {
+    "venue": "Triskel Arts Centre",
+    "address": "Triskel Arts Centre, Cork, Ireland",
+    "coordinates": {
+      "lat": 51.89748,
+      "lng": -8.47596
+    },
+    "source": "venue-overrides.json"
+  },
+  "de barras, clonakilty": {
+    "venue": "De Barras, Clonakilty",
+    "address": "De Barras, Clonakilty, Cork, Ireland",
+    "coordinates": {
+      "lat": 51.6229531,
+      "lng": -8.8890145
+    },
+    "source": "venue-overrides.json"
+  },
+  "live at st. luke's": {
+    "venue": "Live At St. Luke's",
+    "address": "Live At St. Luke's, Cork, Ireland",
+    "coordinates": {
+      "lat": 51.90424,
+      "lng": -8.45706
+    },
+    "source": "venue-overrides.json"
+  },
+  "everyman palace theatre": {
+    "venue": "Everyman Palace Theatre",
+    "address": "Everyman Palace Theatre, Cork, Ireland",
+    "coordinates": {
+      "lat": 51.9014229,
+      "lng": -8.468497
+    },
+    "source": "venue-overrides.json"
+  },
+  "maureens": {
+    "venue": "Maureens",
+    "address": "Maureens, Cork, Ireland",
+    "coordinates": {
+      "lat": 51.90196,
+      "lng": -8.47417
+    },
+    "source": "venue-overrides.json"
+  },
+  "ballymaloe grainstore": {
+    "venue": "Ballymaloe Grainstore",
+    "address": "Ballymaloe Grainstore, Cork, Ireland",
+    "coordinates": {
+      "lat": 51.86478,
+      "lng": -8.07426
+    },
+    "source": "venue-overrides.json"
+  },
+  "coughlan's, douglas st": {
+    "venue": "Coughlan's, Douglas St",
+    "address": "Coughlan's, Douglas St, Cork, Ireland",
+    "coordinates": {
+      "lat": 51.8925523,
+      "lng": -8.4683629
+    },
+    "source": "venue-overrides.json"
+  },
+  "rory gallagher music librar...": {
+    "venue": "Rory Gallagher Music Librar...",
+    "address": "Rory Gallagher Music Librar..., Cork, Ireland",
+    "coordinates": null,
+    "source": "not found"
+  },
+  "ucc library, creative zone": {
+    "venue": "UCC Library, Creative Zone",
+    "address": "UCC Library, Creative Zone, Cork, Ireland",
+    "coordinates": {
+      "lat": 51.89269,
+      "lng": -8.49194
+    },
+    "source": "venue-overrides.json"
+  },
+  "commodore hotel, c'bh": {
+    "venue": "Commodore Hotel, C'bh",
+    "address": "Commodore Hotel, C'bh, Cork, Ireland",
+    "coordinates": {
+      "lat": 51.8497977,
+      "lng": -8.2961851
+    },
+    "source": "venue-overrides.json"
+  },
+  "paddy mac's, coachford": {
+    "venue": "Paddy Mac's, Coachford",
+    "address": "Paddy Mac's, Coachford, Cork, Ireland",
+    "coordinates": {
+      "lat": 51.9091891,
+      "lng": -8.7872465
+    },
+    "source": "venue-overrides.json"
+  },
+  "cork city hall": {
+    "venue": "Cork City Hall",
+    "address": "Cork City Hall, Cork, Ireland",
+    "coordinates": {
+      "lat": 51.8966902,
+      "lng": -8.465944
+    },
+    "source": "venue-overrides.json"
+  },
+  "cork opera house": {
+    "venue": "Cork Opera House",
+    "address": "Cork Opera House, Cork, Ireland",
+    "coordinates": {
+      "lat": 51.900294,
+      "lng": -8.4730758
+    },
+    "source": "venue-overrides.json"
+  },
+  "st. catherine's, kinsale": {
+    "venue": "St. Catherine's, Kinsale",
+    "address": "St. Catherine's, Kinsale, Cork, Ireland",
+    "coordinates": {
+      "lat": 51.7043,
+      "lng": -8.5013
+    },
+    "source": "venue-overrides.json"
+  },
+  "white horse, ballincollig": {
+    "venue": "White Horse, Ballincollig",
+    "address": "White Horse, Ballincollig, Cork, Ireland",
+    "coordinates": {
+      "lat": 51.8861039,
+      "lng": -8.6076183
+    },
+    "source": "venue-overrides.json"
+  },
+  "briery gap, macroom": {
+    "venue": "Briery Gap, Macroom",
+    "address": "Briery Gap, Macroom, Cork, Ireland",
+    "coordinates": {
+      "lat": 51.9044683,
+      "lng": -8.9584949
+    },
+    "source": "venue-overrides.json"
+  },
+  "boole theatres, ucc": {
+    "venue": "Boole theatres, UCC",
+    "address": "Boole theatres, UCC, Cork, Ireland",
+    "coordinates": {
+      "lat": 51.89269,
+      "lng": -8.49194
+    },
+    "source": "venue-overrides.json"
+  },
+  "st georges, mitchelstown": {
+    "venue": "St Georges, Mitchelstown",
+    "address": "St Georges, Mitchelstown, Cork, Ireland",
+    "coordinates": {
+      "lat": 52.264027,
+      "lng": -8.274564
+    },
+    "source": "venue-overrides.json"
+  },
+  "creedon's hotel, macroom": {
+    "venue": "Creedon's Hotel, Macroom",
+    "address": "Creedon's Hotel, Macroom, Cork, Ireland",
+    "coordinates": {
+      "lat": 51.8421797,
+      "lng": -9.1266562
+    },
+    "source": "venue-overrides.json"
+  },
+  "rory gallagher music library": {
+    "venue": "Rory Gallagher Music Library",
+    "address": "Rory Gallagher Music Library, Cork, Ireland",
+    "coordinates": null,
+    "source": "not found"
+  },
+  "wavelength": {
+    "venue": "Wavelength",
+    "address": "Wavelength, Cork, Ireland",
+    "coordinates": null,
+    "source": "not found"
+  },
+  "garinish island": {
+    "venue": "Garinish Island",
+    "address": "Cork, Ireland",
+    "coordinates": {
+      "lat": 51.621587,
+      "lng": -10.1330606
+    },
+    "source": "https://www.corkgigs.com/venue/garinish-island"
+  },
+  "connollys of leap": {
+    "venue": "Connollys of Leap",
+    "address": "Connollys of Leap, Cork, Ireland",
+    "coordinates": {
+      "lat": 51.58101,
+      "lng": -9.14379
+    },
+    "source": "venue-overrides.json"
+  },
+  "boole library, ucc": {
+    "venue": "Boole library, UCC",
+    "address": "Boole library, UCC, Cork, Ireland",
+    "coordinates": null,
+    "source": "not found"
+  }
+}

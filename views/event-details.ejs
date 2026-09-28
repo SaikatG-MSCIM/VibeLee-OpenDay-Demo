@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  >
+  <meta name="theme-color" content="#111917">
+
+  <title><%= pageTitle %></title>
+
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.css"
+  >
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body class="detail-page">
+  <main class="app-shell detail-shell">
+    <nav class="detail-nav" aria-label="Event navigation">
+      <a class="back-link" href="<%= backUrl %>">
+        <span aria-hidden="true">←</span>
+        <%= backLabel %>
+      </a>
+
+      <a class="detail-brand" href="/" aria-label="VibeLee home">
+        <span class="wordmark-symbol" aria-hidden="true">VL</span>
+        VibeLee
+      </a>
+    </nav>
+
+    <% if (!event) { %>
+      <section class="detail-error-state">
+        <p class="section-label">Event details</p>
+        <h1>Event not found</h1>
+        <p>The listing may have changed or may no longer be available.</p>
+        <a class="primary-button detail-error-button" href="<%= backUrl %>">
+          Return to <%= backLabel.toLowerCase() %>
+        </a>
+      </section>
+    <% } else { %>
+      <section class="detail-hero">
+        <div class="detail-hero-media <%= event.imageUrl ? 'has-image' : 'fallback-hero' %>">
+          <% if (event.imageUrl) { %>
+            <img
+              class="detail-hero-image"
+              src="<%= event.imageUrl %>"
+              alt="Image for <%= event.title %>"
+              onerror="this.closest('.detail-hero-media').classList.add('image-failed'); this.remove();"
+            >
+          <% } %>
+
+          <div class="detail-hero-art" aria-hidden="true">
+            <span class="hero-initial"><%= event.title.charAt(0).toUpperCase() %></span>
+            <small>Cork live guide</small>
+          </div>
+        </div>
+
+        <div class="detail-hero-content">
+          <p class="detail-source-label"><%= event.source %></p>
+          <h1><%= event.title %></h1>
+          <p class="detail-hero-venue"><%= event.venue %></p>
+          <span class="detail-hero-rule" aria-hidden="true"></span>
+          <p class="detail-hero-note">Event profile · Cork</p>
+        </div>
+      </section>
+
+      <section class="detail-content">
+        <div class="detail-meta-strip">
+          <div>
+            <span>Date</span>
+            <strong><%= event.date %></strong>
+          </div>
+
+          <div>
+            <span>Time</span>
+            <strong><%= event.time || "Not listed" %></strong>
+          </div>
+
+          <div>
+            <span>Price</span>
+            <strong><%= event.priceLabel %></strong>
+            <% if (event.eventbriteVerified) { %><small>Eventbrite checked</small><% } %>
+          </div>
+        </div>
+
+        <div class="detail-layout">
+          <div class="detail-main-column">
+            <section class="detail-section-card detail-venue-card">
+              <p class="section-label">Venue</p>
+              <h2><%= event.venue %></h2>
+              <% if (event.venueAddress) { %>
+                <p><%= event.venueAddress %></p>
+              <% } %>
+            </section>
+
+            <section class="detail-section-card">
+              <p class="section-label">About the event</p>
+              <h2>Event information</h2>
+              <p class="detail-description"><%= event.description %></p>
+            </section>
+
+            <% if (event.relatedEvents.length > 0) { %>
+              <section class="related-section">
+                <div class="detail-section-heading">
+                  <div>
+                    <p class="section-label">More at this venue</p>
+                    <h2>Also at <%= event.venue %></h2>
+                  </div>
+                </div>
+
+                <div class="related-event-list">
+                  <% event.relatedEvents.forEach((related, index) => { %>
+                    <a
+                      class="related-event-card"
+                      href="/events/<%= encodeURIComponent(related.id) %>"
+                    >
+                      <span class="related-event-index"><%= String(index + 1).padStart(2, "0") %></span>
+                      <span class="related-event-date">
+                        <%= related.date %><%= related.time ? ` · ${related.time}` : "" %>
+                      </span>
+                      <strong><%= related.title %></strong>
+                      <span class="related-event-arrow" aria-hidden="true">→</span>
+                    </a>
+                  <% }) %>
+                </div>
+              </section>
+            <% } %>
+          </div>
+
+          <aside class="detail-side-column">
+            <% if (event.coordinates) { %>
+              <section class="detail-section-card detail-map-card">
+                <div class="detail-section-heading">
+                  <div>
+                    <p class="section-label">Location</p>
+                    <h2>Venue map</h2>
+                  </div>
+                  <span class="detail-map-chip">Cork</span>
+                </div>
+
+                <div
+                  id="detailMap"
+                  data-lat="<%= event.coordinates.lat %>"
+                  data-lng="<%= event.coordinates.lng %>"
+                  data-venue="<%= event.venue %>"
+                ></div>
+              </section>
+            <% } %>
+
+            <section class="detail-actions-panel">
+              <p class="action-panel-label">Continue</p>
+
+              <% if (event.ticketUrl) { %>
+                <a
+                  class="detail-primary-action"
+                  href="<%= event.ticketUrl %>"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Tickets / booking
+                  <span aria-hidden="true">↗</span>
+                </a>
+              <% } else { %>
+                <a
+                  class="detail-primary-action"
+                  href="<%= event.url %>"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Open original listing
+                  <span aria-hidden="true">↗</span>
+                </a>
+              <% } %>
+
+              <a class="detail-secondary-action" href="<%= backUrl %>">
+                Back to <%= backLabel.toLowerCase() %>
+              </a>
+            </section>
+
+            <p class="detail-data-note">
+              <% if (event.eventbriteVerified) { %>
+                Image, description and ticket status were checked against Eventbrite. Confirm final availability with the ticket provider.
+              <% } else { %>
+                Event information is collected from CorkGigs and event pages. Confirm final times, prices and availability with the provider.
+              <% } %>
+            </p>
+          </aside>
+        </div>
+      </section>
+    <% } %>
+
+    <footer class="site-footer mobile-footer">
+      <span>VibeLee</span>
+      <span>Independent Cork event discovery</span>
+    </footer>
+  </main>
+
+  <% if (event && event.coordinates) { %>
+    <script src="https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.js"></script>
+    <script src="/detail.js"></script>
+  <% } %>
+</body>
+</html>

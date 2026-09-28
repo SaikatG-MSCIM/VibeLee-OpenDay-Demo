@@ -1,0 +1,434 @@
+{
+  "book'd @ prim's, kinsale": {
+    "venue": "Book'd @ Prim's, Kinsale",
+    "address": "Book'd @ Prim's, Kinsale, Cork, Ireland",
+    "coordinates": {
+      "lat": 51.70425,
+      "lng": -8.52189
+    },
+    "source": "venue-overrides.json"
+  },
+  "the marquee": {
+    "venue": "The Marquee",
+    "address": "The Marquee, Cork, Ireland",
+    "coordinates": {
+      "lat": 51.8979,
+      "lng": -8.4339
+    },
+    "source": "venue-overrides.json"
+  },
+  "fred zeppelins": {
+    "venue": "Fred Zeppelins",
+    "address": "Fred Zeppelins, Cork, Ireland",
+    "coordinates": {
+      "lat": 51.89615,
+      "lng": -8.47271
+    },
+    "source": "venue-overrides.json"
+  },
+  "st anne's church, shandon": {
+    "venue": "St Anne's Church, Shandon",
+    "address": "St Anne's Church, Shandon, Cork, Ireland",
+    "coordinates": {
+      "lat": 51.9047056,
+      "lng": -8.4761453
+    },
+    "source": "venue-overrides.json"
+  },
+  "cyprus avenue": {
+    "venue": "Cyprus Avenue",
+    "address": "Cyprus Avenue, Cork, Ireland",
+    "coordinates": {
+      "lat": 51.8983433,
+      "lng": -8.4698116
+    },
+    "source": "venue-overrides.json"
+  },
+  "levis, ballydehob": {
+    "venue": "Levis, Ballydehob",
+    "address": "Levis, Ballydehob, Cork, Ireland",
+    "coordinates": {
+      "lat": 51.5626184,
+      "lng": -9.460365
+    },
+    "source": "venue-overrides.json"
+  },
+  "city limits (comedy club)": {
+    "venue": "City Limits (Comedy Club)",
+    "address": "Cork, Ireland",
+    "coordinates": {
+      "lat": 51.9019101,
+      "lng": -8.4709941
+    },
+    "source": "https://www.corkgigs.com/venue/city-limits-comedy-club"
+  },
+  "savoy theatre": {
+    "venue": "Savoy Theatre",
+    "address": "Savoy Theatre, Cork, Ireland",
+    "coordinates": {
+      "lat": 51.89948,
+      "lng": -8.47162
+    },
+    "source": "venue-overrides.json"
+  },
+  "sea church, ballycotton": {
+    "venue": "Sea Church, Ballycotton",
+    "address": "Sea Church, Ballycotton, Cork, Ireland",
+    "coordinates": {
+      "lat": 51.8295069,
+      "lng": -8.0111934
+    },
+    "source": "venue-overrides.json"
+  },
+  "triskel arts centre": {
+    "venue": "Triskel Arts Centre",
+    "address": "Triskel Arts Centre, Cork, Ireland",
+    "coordinates": {
+      "lat": 51.89748,
+      "lng": -8.47596
+    },
+    "source": "venue-overrides.json"
+  },
+  "de barras, clonakilty": {
+    "venue": "De Barras, Clonakilty",
+    "address": "De Barras, Clonakilty, Cork, Ireland",
+    "coordinates": {
+      "lat": 51.6229531,
+      "lng": -8.8890145
+    },
+    "source": "venue-overrides.json"
+  },
+  "live at st. luke's": {
+    "venue": "Live At St. Luke's",
+    "address": "Live At St. Luke's, Cork, Ireland",
+    "coordinates": {
+      "lat": 51.90424,
+      "lng": -8.45706
+    },
+    "source": "venue-overrides.json"
+  },
+  "everyman palace theatre": {
+    "venue": "Everyman Palace Theatre",
+    "address": "Everyman Palace Theatre, Cork, Ireland",
+    "coordinates": {
+      "lat": 51.9014229,
+      "lng": -8.468497
+    },
+    "source": "venue-overrides.json"
+  },
+  "maureens": {
+    "venue": "Maureens",
+    "address": "Maureens, Cork, Ireland",
+    "coordinates": {
+      "lat": 51.90196,
+      "lng": -8.47417
+    },
+    "source": "venue-overrides.json"
+  },
+  "ballymaloe grainstore": {
+    "venue": "Ballymaloe Grainstore",
+    "address": "Ballymaloe Grainstore, Cork, Ireland",
+    "coordinates": {
+      "lat": 51.86478,
+      "lng": -8.07426
+    },
+    "source": "venue-overrides.json"
+  },
+  "coughlan's, douglas st": {
+    "venue": "Coughlan's, Douglas St",
+    "address": "Coughlan's, Douglas St, Cork, Ireland",
+    "coordinates": {
+      "lat": 51.8925523,
+      "lng": -8.4683629
+    },
+    "source": "venue-overrides.json"
+  },
+  "rory gallagher music librar...": {
+    "venue": "Rory Gallagher Music Librar...",
+    "address": "Rory Gallagher Music Librar..., Cork, Ireland",
+    "coordinates": null,
+    "source": "not found"
+  },
+  "ucc library, creative zone": {
+    "venue": "UCC Library, Creative Zone",
+    "address": "UCC Library, Creative Zone, Cork, Ireland",
+    "coordinates": {
+      "lat": 51.89269,
+      "lng": -8.49194
+    },
+    "source": "venue-overrides.json"
+  },
+  "commodore hotel, c'bh": {
+    "venue": "Commodore Hotel, C'bh",
+    "address": "Commodore Hotel, C'bh, Cork, Ireland",
+    "coordinates": {
+      "lat": 51.8497977,
+      "lng": -8.2961851
+    },
+    "source": "venue-overrides.json"
+  },
+  "paddy mac's, coachford": {
+    "venue": "Paddy Mac's, Coachford",
+    "address": "Paddy Mac's, Coachford, Cork, Ireland",
+    "coordinates": {
+      "lat": 51.9091891,
+      "lng": -8.7872465
+    },
+    "source": "venue-overrides.json"
+  },
+  "cork city hall": {
+    "venue": "Cork City Hall",
+    "address": "Cork City Hall, Cork, Ireland",
+    "coordinates": {
+      "lat": 51.8966902,
+      "lng": -8.465944
+    },
+    "source": "venue-overrides.json"
+  },
+  "cork opera house": {
+    "venue": "Cork Opera House",
+    "address": "Cork Opera House, Cork, Ireland",
+    "coordinates": {
+      "lat": 51.900294,
+      "lng": -8.4730758
+    },
+    "source": "venue-overrides.json"
+  },
+  "st. catherine's, kinsale": {
+    "venue": "St. Catherine's, Kinsale",
+    "address": "St. Catherine's, Kinsale, Cork, Ireland",
+    "coordinates": {
+      "lat": 51.7043,
+      "lng": -8.5013
+    },
+    "source": "venue-overrides.json"
+  },
+  "white horse, ballincollig": {
+    "venue": "White Horse, Ballincollig",
+    "address": "White Horse, Ballincollig, Cork, Ireland",
+    "coordinates": {
+      "lat": 51.8861039,
+      "lng": -8.6076183
+    },
+    "source": "venue-overrides.json"
+  },
+  "briery gap, macroom": {
+    "venue": "Briery Gap, Macroom",
+    "address": "Briery Gap, Macroom, Cork, Ireland",
+    "coordinates": {
+      "lat": 51.9044683,
+      "lng": -8.9584949
+    },
+    "source": "venue-overrides.json"
+  },
+  "boole theatres, ucc": {
+    "venue": "Boole theatres, UCC",
+    "address": "Boole theatres, UCC, Cork, Ireland",
+    "coordinates": {
+      "lat": 51.89269,
+      "lng": -8.49194
+    },
+    "source": "venue-overrides.json"
+  },
+  "st georges, mitchelstown": {
+    "venue": "St Georges, Mitchelstown",
+    "address": "St Georges, Mitchelstown, Cork, Ireland",
+    "coordinates": {
+      "lat": 52.264027,
+      "lng": -8.274564
+    },
+    "source": "venue-overrides.json"
+  },
+  "creedon's hotel, macroom": {
+    "venue": "Creedon's Hotel, Macroom",
+    "address": "Creedon's Hotel, Macroom, Cork, Ireland",
+    "coordinates": {
+      "lat": 51.8421797,
+      "lng": -9.1266562
+    },
+    "source": "venue-overrides.json"
+  },
+  "rory gallagher music library": {
+    "venue": "Rory Gallagher Music Library",
+    "address": "Rory Gallagher Music Library, Cork, Ireland",
+    "coordinates": null,
+    "source": "not found"
+  },
+  "wavelength": {
+    "venue": "Wavelength",
+    "address": "Wavelength, Cork, Ireland",
+    "coordinates": null,
+    "source": "not found"
+  },
+  "garinish island": {
+    "venue": "Garinish Island",
+    "address": "Cork, Ireland",
+    "coordinates": {
+      "lat": 51.621587,
+      "lng": -10.1330606
+    },
+    "source": "https://www.corkgigs.com/venue/garinish-island"
+  },
+  "connollys of leap": {
+    "venue": "Connollys of Leap",
+    "address": "Connollys of Leap, Cork, Ireland",
+    "coordinates": {
+      "lat": 51.58101,
+      "lng": -9.14379
+    },
+    "source": "venue-overrides.json"
+  },
+  "boole library, ucc": {
+    "venue": "Boole library, UCC",
+    "address": "Boole library, UCC, Cork, Ireland",
+    "coordinates": null,
+    "source": "not found"
+  },
+  "kino events house": {
+    "venue": "Kino Events House",
+    "address": "Kino Events House, Cork, Ireland",
+    "coordinates": {
+      "lat": 51.897415,
+      "lng": -8.4810246
+    },
+    "source": "venue-overrides.json"
+  },
+  "the roundy": {
+    "venue": "The Roundy",
+    "address": "Skip to content Drinks MenuLive EventsComedy ClubContactToggle website search Menu Close Home Drinks Menu Live Events Comedy Club Contact Toggle website search Comedy Club Drinks Menu Live About us Welcome to A cozy bar in the heart of Cork, Ireland",
+    "coordinates": {
+      "lat": 51.8987809,
+      "lng": -8.476201
+    },
+    "source": "http://www.theroundy.ie/"
+  },
+  "marino church, bantry": {
+    "venue": "Marino Church, Bantry",
+    "address": "Marino Church, Bantry, Cork, Ireland",
+    "coordinates": null,
+    "source": "not found"
+  },
+  "ionad cult'rtha, baile mhuirne": {
+    "venue": "Ionad Cult'rtha, Baile Mhuirne",
+    "address": "Ionad Cult'rtha, Baile Mhuirne, Cork, Ireland",
+    "coordinates": null,
+    "source": "not found"
+  },
+  "the pavilion": {
+    "venue": "The Pavilion",
+    "address": "About The Pav Drinks Menus Pav Cocktails Menu Pav Beer Menu Pav Wine Menu Intermission Cocktails Intermission Get In Touch Events Paddys Weekend Gallery Select Page About The Pav raises its curtains The Pavilion is back to its former glory! Open now, The Pav is open from from 5pm Thursday to Sunday. Open until late Thursday, Friday, Saturday and Sunday. Cork, Ireland",
+    "coordinates": {
+      "lat": 51.8985396,
+      "lng": -8.4736114
+    },
+    "source": "https://thepav.ie/about-us/"
+  },
+  "st. george's, mitchelstown": {
+    "venue": "St. George's, Mitchelstown",
+    "address": "Cork, Ireland",
+    "coordinates": {
+      "lat": 52.2672374,
+      "lng": -8.2740491
+    },
+    "source": "https://www.corkgigs.com/venue/st-georges-mitchelstown"
+  },
+  "paddy macs, coachford": {
+    "venue": "Paddy Macs, Coachford",
+    "address": "Paddy Macs, Coachford, Cork, Ireland",
+    "coordinates": {
+      "lat": 51.9091891,
+      "lng": -8.7872465
+    },
+    "source": "venue-overrides.json"
+  },
+  "schoolyard theatre, charleville": {
+    "venue": "Schoolyard Theatre, Charleville",
+    "address": "Schoolyard Theatre, Charleville, Cork, Ireland",
+    "coordinates": null,
+    "source": "not found"
+  },
+  "cork city library": {
+    "venue": "Cork City Library",
+    "address": "Cork, Ireland",
+    "coordinates": {
+      "lat": 51.8967078,
+      "lng": -8.4754749
+    },
+    "source": "https://www.corkgigs.com/venue/cork-city-library"
+  },
+  "dali (over nudes), lavitts quay": {
+    "venue": "Dali (over Nudes), Lavitts Quay",
+    "address": "Dali (over Nudes), Lavitts Quay, Cork, Ireland",
+    "coordinates": null,
+    "source": "not found"
+  },
+  "crane lane theatre": {
+    "venue": "Crane Lane Theatre",
+    "address": "Events Upcoming Events Past Events Contact Us About open late 7 nights a week with live music & DJs ARTHUR MAYNE'SJoin us upstairs at Arthur Mayne’s STAGE DOORThe perfect place to meet CRYSTAL BARThe home for music in Cork, Ireland",
+    "coordinates": {
+      "lat": 51.8975668,
+      "lng": -8.4694289
+    },
+    "source": "http://www.cranelanetheatre.ie/"
+  },
+  "st. brendan's church, bantry": {
+    "venue": "St. Brendan's Church, Bantry",
+    "address": "St. Brendan's Church, Bantry, Cork, Ireland",
+    "coordinates": null,
+    "source": "not found"
+  },
+  "ma murphys, bantry": {
+    "venue": "Ma Murphys, Bantry",
+    "address": "Ma Murphys, Bantry, Cork, Ireland",
+    "coordinates": null,
+    "source": "not found"
+  },
+  "white lady, kinsale": {
+    "venue": "White Lady, Kinsale",
+    "address": "Cork, Ireland",
+    "coordinates": {
+      "lat": 51.7013822,
+      "lng": -8.519623
+    },
+    "source": "https://www.corkgigs.com/venue/white-lady-kinsale"
+  },
+  "sirius arts centre": {
+    "venue": "Sirius Arts Centre",
+    "address": "Search the site ONE HERE NOW THE BRIAN O'DOHERTY PATRICK IRELAND PROJECT About Brian O'Doherty About the Project About the Restoration of One Here Now Project Programme Press and publications Project Partners Project Supporters The Team & Contact Travel & Accommodation Parking Donate 021 4813790 info@siriusartscentre.ie Visit About About Sirius The building and its history Mission & Vision Opportunities Internships Other Opportunities and Community Employment Residencies Residency Programme Past residencies Current artist in residence Space for hire Support Us Donate Contact, Staff and Governance 021 4813790 info@siriusartscentre.ie Exhibitions Learning & Outreach Concerts All events Past events 021 4813790 info@siriusartscentre.ie mobile nav Exhibitions SIRIUS Restoration Project - Irish Georgian Society 1st Apr 2024 - 31st Dec 2030 Concerts The Quiet Club: Danny McCarthy and Mick O'Shea 10th Oct Learning & Outreach Colour Explorers 24th Oct Learning & Outreach Art Adventure Day: Halloween 31st Oct General The building and its history Share Visiting view larger Opening Hours Wednesday - Saturday, 11.00 - 17:00 Email: team@siriusartscentre.ieContact number: 021 4813790 Sign up to our e-bulletin For the latest news and releases. Email Address (function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[6]='MMERGE6';ftypes[6]='text';fnames[7]='MMERGE7';ftypes[7]='text';fnames[8]='MMERGE8';ftypes[8]='text';fnames[10]='MMERGE10';ftypes[10]='text';fnames[13]='MMERGE13';ftypes[13]='text';fnames[14]='MMERGE14';ftypes[14]='text';fnames[16]='MMERGE16';ftypes[16]='text';fnames[17]='MMERGE17';ftypes[17]='text';fnames[20]='MMERGE20';ftypes[20]='text';fnames[21]='MMERGE21';ftypes[21]='text';fnames[22]='MMERGE22';ftypes[22]='text';fnames[27]='MMERGE27';ftypes[27]='text';fnames[28]='MMERGE28';ftypes[28]='text';fnames[30]='MMERGE30';ftypes[30]='text';fnames[15]='MMERGE15';ftypes[15]='text';}(jQuery));var $mcj = jQuery.noConflict(true); (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m) })(window,document,'script','//www.google-analytics.com/analytics.js','ga'); ga('create', 'UA-58590292-1', 'auto'); ga('send', 'pageview'); $(document).ready(function(){ /*$('.fancybox').attr('rel', 'gallery').fancybox({ padding : 0 });*/ $(\".fancybox\").fancybox({ padding : 0, helpers : { media : {} } }); $('.search_trig').click(function(){ $('#search').slideToggle(150); }); $('.show_link').parent().next().hide(); $('li.parent a.parentlink').click(function(){ if($('.nav_trigger').is(\":visible\")){ $(this).next('ul').slideToggle(200); return false; } }); $('.extra_info_trigger').click(function(){ $(this).next().slideToggle(100); return false; }); $('.show_link').click(function(){ $(this).parent().next().slideToggle(200); return false; }); var track_click = 0; var section=''; var total_pages = ; $(\".load_more\").click(function (e) { offset = $(this).offset().top; $('#load_more_button').hide(); $('.animation_image').show(); if(track_click <= total_pages){ $.post('https://www.siriusartscentre.ie/fetch_pages.php',{'page': track_click}, function(data) { $(\"#load_more_button\").show(); $(\"#results\").append(data); $(\"html, body\").animate({scrollTop: offset - 50}, 500); $('.animation_image').hide(); track_click++; if (('localStorage' in window) && window['localStorage'] !== null) { var form = $(\"#results\").html(); localStorage.setItem('myTable'+section, form); localStorage.setItem('trackClick'+section, track_click); } if(track_click >= total_pages){ $(\"#load_box\").fadeTo(400,.01); $('#load_box').css(\"visibility\", \"hidden\"); } }).fail(function(xhr, ajaxOptions, thrownError) { alert(thrownError); $(\"#load_more_button\").show(); $('.animation_image').hide(); }); } }); $('.nav_trigger').click(function(){ $('.mainnav').slideToggle(200); $('.catnav').slideToggle(200); $(this).toggleClass('opened'); }); });",
+    "coordinates": {
+      "lat": 51.849129,
+      "lng": -8.2971674
+    },
+    "source": "http://www.siriusartscentre.ie/"
+  },
+  "virgin media park": {
+    "venue": "Virgin Media Park",
+    "address": "Virgin Media Park, Cork, Ireland",
+    "coordinates": {
+      "lat": 51.88085,
+      "lng": -8.47172
+    },
+    "source": "venue-overrides.json"
+  },
+  "sonflour, castle st": {
+    "venue": "Sonflour, Castle St",
+    "address": "sonflour Menu page menu menu restaurant cafeteria & drinks sonflour wines bookings & hours Events gift vouchers Blog about us sustainability merch our suppliers our story press Sonflour events We never considered Sonflour simply a place to eat but as a new community, dedicated to a process of continuous growth of the city, promoting cultural activities and events aimed at social and environmental awareness. Music from the sofaJarJar.Jr Saturday the 14th of June / 9 pmWe are be back Saturday the 14th of June with the last Music from the Sofa.Entrance fee? “Up to you” as always — and every cent will be donated to Munster Lost and Found.Save the date, come spread the love, Catch the Dusk, and celebrate the good vibes one more time before summer!Cork, Ireland",
+    "coordinates": {
+      "lat": 51.8985705,
+      "lng": -8.4768422
+    },
+    "source": "https://www.sonflour.ie/events"
+  },
+  "sv p'irc u' chaoimh": {
+    "venue": "SV P'irc U' Chaoimh",
+    "address": "SV P'irc U' Chaoimh, Cork, Ireland",
+    "coordinates": null,
+    "source": "not found"
+  },
+  "st. catherines centre, kinsale": {
+    "venue": "St. Catherines Centre, Kinsale",
+    "address": "St. Catherines Centre, Kinsale, Cork, Ireland",
+    "coordinates": null,
+    "source": "not found"
+  }
+}
