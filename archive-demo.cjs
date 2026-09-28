@@ -51,7 +51,7 @@ function main() {
   // Validate before loading the server; a missing/invalid archive never goes live.
   const html = readSnapshot();
   process.chdir(__dirname);
-  process.env.PORT = "3001";
+  process.env.PORT = process.env.PORT || "3001";
 
   // server.js receives this same CommonJS Axios object. Match only its exact
   // homepage URL; detail pages, query URLs and other services use the original.
