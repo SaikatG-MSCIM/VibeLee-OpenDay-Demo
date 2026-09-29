@@ -82,7 +82,7 @@ VibeLee-OpenDay-Demo/
 
 ## Requirements
 
-Use a recent Node.js installation. **Node.js 20 LTS or newer is recommended.**
+Use a recent Node.js installation. **Node.js 20.18.1 or newer is required.**
 
 You will also need:
 

@@ -6,6 +6,9 @@
   "scripts": {
     "start": "node archive-demo.cjs"
   },
+  "engines": {
+  "node": ">=20.18.1"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
