@@ -5,6 +5,9 @@ node_modules/
 .env
 .env.*
 
+# Allow the example configuration file
+!.env.example
+
 # Runtime/cache
 # venue-cache.json
 
